@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import Item from './components/Item';
+import InputItem from './components/InputItem';
 function App() {
+  const [todoList, setTodoList] = useState([]);
+
+  function addTodoList (event, newItem) {
+    event.preventDefault()
+    setTodoList([...todoList, newItem])
+  }
+
+  function deleteItem(index) {
+    setTodoList(todoList.filter((item, i) => (i !== index)));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <InputItem addTodoList={addTodoList}/>
+      <div style={{display: "flex", justifyContent: "center", paddingTop: "2%"}}>
+      <div style={{width: "50%", display: "flex", flexDirection:"column", justifyContent: "center", paddingTop: "2%"}}>
+        {todoList.map((item, index) => {
+          return <Item key={item.id} item={item} onDelete={() => deleteItem(index)}/>;
+        })}
+        </div>
+        </div>
     </div>
   );
 }
