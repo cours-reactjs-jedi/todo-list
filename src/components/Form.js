@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import Button from './Button';
 function Form() {
   const [formData, setFormData] = useState({
     name: "",
@@ -45,7 +46,7 @@ function Form() {
           name="address"
           onChange={handleChange}
         />
-        <button type="submit">submit</button>
+        <Button type="submit">submit</Button>
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import Button from './Button';
 
 function InputItem({addTodoList}) {
 
@@ -13,7 +14,8 @@ function InputItem({addTodoList}) {
         alignItems: "center",
       }}
       onSubmit={(event) => {
-        addTodoList(event, {name: newItem, id: uuidv4()});
+        event.preventDefault()
+        addTodoList({name: newItem, id: uuidv4()});
         setNewItem("")
       }}
     >
@@ -24,9 +26,9 @@ function InputItem({addTodoList}) {
         }}
         style={{ width: "250px", height: "30px" }}
       />
-      <button type="submit" style={{ width: "150px", height: "30px" }}>
+      <Button type="submit" style={{ width: "150px", height: "30px" }}>
         Click
-      </button>
+      </Button>
     </form>
   );
 }
