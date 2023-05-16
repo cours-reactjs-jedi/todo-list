@@ -1,11 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
 
-function Item({item, onDelete}) {
+function Item({item, onDelete, onCheck}) {
 
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(item.checked || false);
 
   function handleChecked() {
+    onCheck();
     setChecked(!checked)
   }
 
