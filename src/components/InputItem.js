@@ -19,6 +19,7 @@ function InputItem({addTodoList}) {
         setNewItem("")
       }}
     >
+      <label>Ajoutez une todo</label>
       <input
         value={newItem}
         onChange={(event) => {
